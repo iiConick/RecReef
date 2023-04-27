@@ -13,8 +13,10 @@ const Tab = createMaterialBottomTabNavigator();
 
 function AppNavigator() {
   return (
-    <NavigationContainer>
+    <NavigationContainer 
+    independent={true}>
       <Tab.Navigator
+        screenOptions={{headerShown: false}}
         initialRouteName="ButtonBook"
         activeColor="#f0edf6"
         inactiveColor="#3e2465"
@@ -34,6 +36,9 @@ function AppNavigator() {
           name="ButtonGuide"
           component={ButtonGuide}
           options={{
+            headerShown: false, // hide the header
+        headerLeft: null, // remove the back button
+
             tabBarLabel: 'Button Guide',
             tabBarIcon: ({ color }) => (
               <MaterialCommunityIcons name="book-open-variant" color={color} size={26} />

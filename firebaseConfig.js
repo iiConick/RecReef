@@ -25,7 +25,9 @@ if (!firebase.apps.length) {
   const storage = new firebase.storage.Storage(firebase.app(), {
     storageBucket: firebaseConfig.storageBucket,
   });
+
+  const auth = firebase.auth();
   
   const db = firebase.firestore();
 
-    export { db, storage };
+    export { db, storage, auth };
