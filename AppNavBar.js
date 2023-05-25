@@ -3,6 +3,7 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import { NavigationContainer } from '@react-navigation/native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
+
 // Import your screen components here
 import ButtonBook from './screens/ButtonBook';
 import ButtonGuide from './screens/ButtonGuide';
@@ -13,8 +14,6 @@ const Tab = createMaterialBottomTabNavigator();
 
 function AppNavigator() {
   return (
-    <NavigationContainer 
-    independent={true}>
       <Tab.Navigator
         screenOptions={{headerShown: false}}
         initialRouteName="ButtonBook"
@@ -66,7 +65,6 @@ function AppNavigator() {
           }}
         />
       </Tab.Navigator>
-    </NavigationContainer>
   );
 }
 

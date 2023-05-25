@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View, FlatList, StyleSheet, Dimensions, Image } from 'react-native';
 import { db, storage } from '../firebaseConfig';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Image as RNImage } from 'react-native';
+import sandDollarImage from '../assets/sand-dollar.png';
+
 
 
 function ButtonGuide() {
@@ -31,6 +35,13 @@ function ButtonGuide() {
       <View style={styles.textContainer}>
         <Text style={styles.buttonTitle}>{item.name}</Text>
         <Text style={styles.buttonDescription}>{item.description}</Text>
+      </View>
+      <View style={styles.sandDollarContainer}>
+        <Text style={styles.sandDollarValue}>{item.sandDollarValue}</Text>
+        <RNImage
+          source={sandDollarImage}
+          style={styles.sandDollarIcon}
+        />
       </View>
     </View>
   );
@@ -91,6 +102,23 @@ const styles = StyleSheet.create({
     padding: 10,
     marginBottom: 10,
     width: Dimensions.get('window').width - 20,
+  },
+  sandDollarContainer: {
+    position: 'absolute',
+    top: 5,
+    right: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  sandDollarValue: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    marginRight: 2,
+  },
+  sandDollarIcon: {
+    width: 20,
+    height: 20,
+    resizeMode: 'contain',
   },
 });
 

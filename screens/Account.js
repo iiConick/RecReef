@@ -1,11 +1,33 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { auth } from '../firebaseConfig'
+import { useNavigation } from '@react-navigation/core'
+
+
 
 export default function Account() {
+
+  const navigation = useNavigation()
+
+  const handleSignOut = () => {
+    auth
+    .signOut()
+    .then(() => {
+      console.log("User signed out!");
+      navigation.replace("Login");
+    })
+    .catch((error) => {
+      console.error("Error signing out: ", error);
+    });
+
+  }
+
   return (
     <View style={styles.container}>
+      <Text>{auth.currentUser?.email}</Text>
       <TouchableOpacity
+        onPress={handleSignOut}
         style={styles.button}
       >
         <Text style={styles.buttonText}>Sign Out</Text>
