@@ -6,9 +6,9 @@ import { db, storage } from '../firebaseConfig';
 function ButtonGuide() {
   const [buttons, setButtons] = useState([]);
   const numColumns = 3;
-const padding = 5; // You can adjust this value as needed
-const screenWidth = Dimensions.get('window').width;
-const imageSize = (screenWidth - (numColumns + 1) * padding) / numColumns;
+  const padding = 5; // You can adjust this value as needed
+  const screenWidth = Dimensions.get('window').width;
+  const imageSize = (screenWidth - (numColumns + 1) * padding) / numColumns;
 
 
   useEffect(() => {

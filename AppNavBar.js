@@ -3,6 +3,7 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import { NavigationContainer } from '@react-navigation/native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
+import Header from './header.js'; // Assuming this is where your Header component is located
 
 // Import your screen components here
 import ButtonBook from './screens/ButtonBook';
@@ -14,6 +15,8 @@ const Tab = createMaterialBottomTabNavigator();
 
 function AppNavigator() {
   return (
+    <>
+      <Header />
       <Tab.Navigator
         screenOptions={{headerShown: false}}
         initialRouteName="ButtonBook"
@@ -35,9 +38,8 @@ function AppNavigator() {
           name="ButtonGuide"
           component={ButtonGuide}
           options={{
-            headerShown: false, // hide the header
-        headerLeft: null, // remove the back button
-
+            headerShown: false,
+            headerLeft: null,
             tabBarLabel: 'Button Guide',
             tabBarIcon: ({ color }) => (
               <MaterialCommunityIcons name="book-open-variant" color={color} size={26} />
@@ -65,7 +67,9 @@ function AppNavigator() {
           }}
         />
       </Tab.Navigator>
+    </>
   );
 }
 
 export default AppNavigator;
+
