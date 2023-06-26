@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Image, TouchableOpacity, FlatList, StyleSheet } from 'react-native';
 import { db } from '../firebaseConfig'; // adjust the path accordingly
+import { useNavigation } from '@react-navigation/native';
+
 
 export default function Shop() {
+    const navigation = useNavigation();
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
@@ -21,9 +24,11 @@ export default function Shop() {
             data={products}
             numColumns={2}
             renderItem={({item}) => (
-                <TouchableOpacity style={styles.itemContainer}>
-                    <Image source={require('../assets/whistle.png')} style={styles.image} />
-                    <Text style={styles.title}>{item.title}</Text>
+                <TouchableOpacity style={styles.itemContainer}
+                     onPress={() => navigation.navigate('ProductDetails', { item })}
+                     >
+                    <Image source={{ uri: `${item.imageUrl}` }} style={styles.image} />
+                    <Text style={styles.title}>{item.productName}</Text>
                     <View style={styles.priceContainer}>
                         <Image source={require('../assets/sand-dollar.png')} style={styles.sandDollar} />
                         <Text style={styles.price}>{item.price}</Text>
