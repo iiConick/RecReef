@@ -29,7 +29,27 @@ const LoginScreen = () => {
             const user = userCredentials.user;
             console.log(user.email)
         })
-        .catch(error => alert(error.message))
+        .catch(error => {
+          // You can provide more user-friendly messages based on the error code.
+          switch (error.code) {
+              case 'auth/email-already-in-use':
+                  alert('This email is already in use. Please try another one.');
+                  break;
+              case 'auth/invalid-email':
+                  alert('Please enter a valid email address.');
+                  break;
+              case 'auth/weak-password':
+                  alert('Your password must be at least 6 characters. Please choose a stronger password.');
+                  break;
+              case 'auth/missing-password':
+                  alert('Please enter a password');
+                  break;
+              default:
+                  alert(error.message);
+                  break;
+          }
+      })
+      
     }
 
     const handleLogin = () => {
@@ -39,7 +59,7 @@ const LoginScreen = () => {
             const user = userCredentials.user;
             console.log("Logged in with", user.email)
         })
-        .catch(error => alert(error.message))
+        .catch(error => alert("Invalid username or password."))
     }
 
   return (
